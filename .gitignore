@@ -1,0 +1,4 @@
+.vscode/
+build_dir/
+run_example
+*~
