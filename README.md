@@ -9,6 +9,14 @@ LIB=${LD_LIBRARY_PATH} CXX=icpx cmake . -B build_dir -DCMAKE_INSTALL_PREFIX=.
 cmake --build build_dir --target install
 ```
 
+Building requires `cmake` of version 3.21 or higher (to support integration with DPC++ compiler).
+It also requires `level-zero` and `level-zero-dev` packages to be installed. Check with
+
+```bash
+dpkg -l | grep level-zero
+```
+
+
 ## Running
 
 ```bash
