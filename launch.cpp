@@ -195,8 +195,16 @@ int main(void) {
     y_as_expected = y_host_ptr[i] == 2;
   }
 
+  bool a_ok = x_as_expected && y_as_expected;
+
+  if (a_ok) {
+    std::cout << "No data corruption detected" << std::endl;
+  } else {
+    std::cout << "Data CORRUPTION detected" << std::endl;
+  }
+
   delete[] x_host_ptr;
   delete[] y_host_ptr;
 
-  return 0;
+  return (a_ok) ? 0 : 1;
 }
