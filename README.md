@@ -14,3 +14,21 @@ cmake --build build_dir --target install
 ```bash
 ./run_example
 ```
+
+Obversed outputs:
+
+```
+(dev_dpctl) user@work:~/repos/wsl_corruption_repro$ ./run_example
+Execution device: Intel(R) Graphics [0x9a49]
+Execution device driver_version: 1.3.24347
+x: 1 1 1 1 1 1 1 1 1 1
+y: 2 2 2 2 2 2 2 2 2 2
+```
+
+```
+(dev_dpctl) opavlyk@opavlyk-mobl:~/repos/wsl_corruption_repro$ SYCL_DEVICE_FILTER=opencl ./run_example
+Execution device: Intel(R) Graphics [0x9a49]
+Execution device driver_version: 22.39.24347
+x: 1 1 1 1 1 1 1 1 1 1
+y: 2 2 2 2 2 2 2 2 2 2
+```
