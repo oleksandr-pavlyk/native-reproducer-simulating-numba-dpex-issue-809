@@ -173,6 +173,8 @@ int main(void) {
     throw std::runtime_error("Unsupported backend");
   }
 
+  std::cout << "Kernel private memory: " << krn->get_info<sycl::info::kernel_device_specific::private_mem_size>(q.get_device()) << std::endl;
+
   sycl::event e = submit_interop_kernel(q, *krn, x_ptr, y_ptr, n, {e1_pop, e2_pop});
 
   log_out("Submitted the interop kernel");
