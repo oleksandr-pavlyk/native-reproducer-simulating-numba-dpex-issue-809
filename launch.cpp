@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <fstream>
 #include <cstdint>
+#include <exception>
 
 #include "ze_interop.h"
 #include "cl_interop.h"
@@ -174,6 +175,12 @@ int main(void) {
   }
 
   std::cout << "Kernel private memory: " << krn->get_info<sycl::info::kernel_device_specific::private_mem_size>(q.get_device()) << std::endl;
+  try{
+    std::cout << "Kernel work-group size: " << krn->get_info<sycl::info::kernel_device_specific::work_group_size>(q.get_device()) << std::endl;
+  } catch (const std::exception &e) {
+    std::cerr << "Caught exception: " << e.what() << std::endl;
+    std::terminate();
+  }
 
   sycl::event e = submit_interop_kernel(q, *krn, x_ptr, y_ptr, n, {e1_pop, e2_pop});
 
